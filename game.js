@@ -75,19 +75,19 @@ const adventurer = newImage('assets/playerIdle.png', '75px')
 
 function handleDirectionChange(direction){
     if(direction === null){
-        character.src = 'assets/playerIdle.png'
+        adventurer.src = 'assets/playerIdle.png'
     }
     if(direction === 'west'){
-        character.src = 'assets/playerRunLeft.png'
+        adventurer.src = 'assets/playerRunLeft.png'
     }
     if(direction === 'north'){
-        character.src = 'assets/playerJump.png'
+        adventurer.src = 'assets/playerJump.png'
     }
     if(direction === 'east'){
-        character.src = 'assets/playerRun.png'
+        adventurer.src = 'assets/playerRun.png'
     }
     if(direction === 'south'){
-        character.src = 'assets/playerRun.png'
+        adventurer.src = 'assets/playerRun.png'
     }
 }
 
