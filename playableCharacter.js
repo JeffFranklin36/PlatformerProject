@@ -1,5 +1,3 @@
-console.log('attached')
-
 function newPlayableCharacter(x, y) {
  const element = newImage('assets/playerIdle.png', 100, 100)
  element.style.zIndex = 1;
