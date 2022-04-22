@@ -1,10 +1,23 @@
 function newImage(url, height){
  let image = document.createElement('img')
- image.src = url
+ image.src = src
  image.style.height = height
  document.body.append(image)
  return image
 }
+
+function newPlatform(url, positionLeft, positionBottom){
+    let image = document.createElement('img')
+    image.src = url
+    image.style.position = 'fixed'
+    image.style.left = positionLeft
+    image.style.bottom = positionBottom
+    document.body.append(image)
+    return image
+}
+let jump = 8
+const adventurer = newImage('assets/playerIdle.png', '75px')
+const platform = newPlatform('assets/platform.png', '0px', '0px')
 
 function move(element) {
  element.style.position = 'fixed'
@@ -26,7 +39,7 @@ function move(element) {
          if(direction === 'west'){
              x-=1
          }
-         if(direction === 'north'){
+         if(direction === 'north' && ){
              y+=1
          }
          if(direction === 'east'){
@@ -71,7 +84,7 @@ function move(element) {
  }        
 }
 
-const adventurer = newImage('assets/playerIdle.png', '75px')
+
 
 function handleDirectionChange(direction){
     if(direction === null){
@@ -98,7 +111,52 @@ move(adventurer).withArrowKeys(100, 250, handleDirectionChange)
 
 
 
+// document.addEventListener('keydown', function(e){
+//     if(e.repeat) return;
 
+//     if(e.key === 'ArrowLeft'){
+//         adventurer.move(-2)
+//     }
+//     if(e.key === 'ArrowUp'){
+//         if (key == 'UP' && adventurer.touching(platform)) {
+//             jump = -5
+//             after(0.2, "seconds", () => {
+//               jump = 5
+//             })
+//           }
+//     }
+//     if(e.key === 'ArrowRight'){
+//         adventurer.move(2)
+//     }
+//     if(e.key === 'ArrowDown'){
+//         direction = 'south'
+//     }
+//     onDirectionChange(direction)
+// })
+
+
+// onKeyDown(key => {
+//     if (key == 'UP' && adventurer.touching(platform)) {
+//       jump = -5
+//       after(0.2, "seconds", () => {
+//         jump = 5
+//       })
+//     }
+//   })
+//   forever(() => {
+//     // Player movement
+//     if (keysDown.includes('RIGHT')) {
+//       adventurer.move(2)
+//     }
+//     if (keysDown.includes('LEFT')) {
+//       adventurer.move(-2)
+//     }
+    
+//     // Bring player back to ground
+//     if ((jump < 0) || (!(adventurer.touching(platform)))) {
+//       adventurer.y -= jump;
+//     }
+//   })
 
 
 
