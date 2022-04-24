@@ -1,17 +1,15 @@
-function startGame(){
+function renderGame(){
  myGameArea.start();
-//  let player = newPlayableCharacter(100, 100);
  worldElements.forEach(element => {
      createdElement = new Component(element.width, element.height, element.color, element.x, element.y, element.z, element.src)
      createdElement.create();
-    //  createdElement.createImg();
  });
  objectives.forEach(element => {
     createdElement = new Component(element.width, element.height, element.color, element.x, element.y, element.z, element.src)
     createdElement.createImg();
  })
- renderplayer()
- renderplat()
+ renderPlayer()
+
 //  let playerCharacter = new Player(40, 60, 'black', 10, 350, 1)
 //  playerCharacter.renderplayer()
 //  let player = new Component(100, 100, '', -10, 310, 1, '/assets/playerIdle.png')
@@ -25,6 +23,7 @@ let myGameArea = {
     start : function() {
         this.canvas.width = 1485;
         this.canvas.height = 500;
+        // this.context.clearRect(0,0, 1485, 500)
         this.context = this.canvas.getContext("2d");
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     }
