@@ -10,8 +10,12 @@ function startGame(){
     createdElement = new Component(element.width, element.height, element.color, element.x, element.y, element.z, element.src)
     createdElement.createImg();
  })
- let player = new Component(100, 100, '', -10, 310, 1, '/assets/playerIdle.png')
- player.createPlayer();
+ renderplayer()
+ renderplat()
+//  let playerCharacter = new Player(40, 60, 'black', 10, 350, 1)
+//  playerCharacter.renderplayer()
+//  let player = new Component(100, 100, '', -10, 310, 1, '/assets/playerIdle.png')
+//  player.createPlayer();
 }
 
 
