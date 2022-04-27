@@ -2,59 +2,49 @@ let keys = {
     right: false,
     left: false,
     up: false,
-   };
-   
-   let gravity = 0.6;
-   let friction = 0.7;
-   
-   
-    function keydown(e) {
-     // 37 is the code for thr left arrow key
+    down: false,
+   };  
+function keydown(e) {
      if(e.keyCode == 37) {
          keys.left = true;
         }
-        //38 is the code for the up arrow key
-     if(e.keyCode == 38) {
-      if(player.jump == false) {
-          player.y_v = -10;
-      }
-   }
-     // 39 is the code for the right arrow key
-     if(e.keyCode == 39) {
+     else if(e.keyCode == 39) {
       keys.right = true;
      }
+     else if(e.keyCode == 38) {
+         keys.up = true
+         setTimeout(() =>{keys.up = false;}, 50)
+         setTimeout(() =>{keys.down = true;}, 50)
+        //  setTimeout(() =>{keys.up = true;}, 1000)
+        // timeout make a function that makes it go down until it collides with something
+       }
    }
-   
-       // This function is called when the key is released
-       function keyup(e) {
-        if(e.keyCode == 37) {
+
+    function keyup(e) {
+     if(e.keyCode == 37) {
          keys.left = false;
-     }
-     if(e.keyCode == 38) {
-      if(player.y_v < -2) {
-      player.y_v = -3;
-     }
-    }
-     if(e.keyCode == 39) {
+        }
+     else if(e.keyCode == 39) {
          keys.right = false;
      }
+     else if(e.keyCode == 38) {
+        keys.up = false;
+        setTimeout(() =>{keys.down = false;}, 50)
+    }
     } 
     function loop() {
-     if(player.jump == false) {
-      player.x_v *= friction;
-     }else {
-      // If the player is in the air then apply the effect of gravity
-      player.y_v += gravity;
-     }
-     player.jump = true;
-     // If the left key is pressed, move the player to the left
      if(keys.left) {
-      player.x+= -2.5;
+      player.x+= -5.5;
      }
-      // If the right key is pressed, move the player to the right
      if(keys.right) {
-         player.x  += 2.5;
+         player.x  += 5.5;
      }
+     if(keys.up) {
+        player.y  -= 80;
+    }
+    if(keys.down){
+        player.y = 350; 
+    }
    
      renderGame()
     }

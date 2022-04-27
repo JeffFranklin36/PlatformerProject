@@ -1,16 +1,25 @@
+//array of game elements that will ne
 let worldElements = [
- ground = {width: 1485, height: 75, color: 'brown', x: 0, y:425, z:0},
- grass =  {width: 1485, height: 25, color: 'green', x: 0, y:400, z:0},
+ groundLeft = {width: 495, height: 75, color: 'brown', x: 0, y:425, z:0},
+ grassLeft =  {width: 495, height: 25, color: 'green', x: 0, y:400, z:0},
+ groundRight = {width: 495, height: 75, color: 'brown', x: 1010, y:425, z:0},
+ grassRight =  {width: 495, height: 25, color: 'green', x: 1010, y:400, z:0},
+ lava = {width: 515, height: 100, color: 'orange', x:495, y:410, z:0},
  sky = {width: 1485, height: 400, color: 'skyblue', x: 0, y:0, z:0},
+ skyFill = {width: 515, height: 15, color: 'skyblue', x:495, y:400, z:0},
  sun = {width: 80, height: 80, color: 'lightyellow', x: 80, y:50, z:1},
- platform = {width: 160, height: 30, color: 'slategray', x: 500, y:290, z:1},
- // coin1 = {width: 20, height: 20, x: 550, y:285, z:1, src: 'assets/coin1.png'},
- // coin2 = {width: 20, height: 20, x: 600, y:285, z:1, src: 'assets/coin1.png'}
+ platform1 = {width: 160, height: 30, color: 'slategray', x: 480, y:290, z:1},
+ platform2 = {width: 160, height: 30, color: 'slategray', x: 640, y:240, z:1},
+ platform3 = {width: 160, height: 30, color: 'slategray', x: 800, y:290, z:1},
 ]
 
 let objectives = [
- coin1 = {width: 20, height: 20, x: 550, y:265, z:1, src: 'assets/coin1.png'},
- coin2 = {width: 20, height: 20, x: 600, y:265, z:1, src: 'assets/coin1.png'}
+ coin1 = {width: 20, height: 20, x: 525, y:265, z:1, src: 'assets/coin1.png'},
+ coin2 = {width: 20, height: 20, x: 575, y:265, z:1, src: 'assets/coin1.png'},
+ coin3 = {width: 20, height: 20, x: 680, y:215, z:1, src: 'assets/coin1.png'},
+ coin4 = {width: 20, height: 20, x: 740, y:215, z:1, src: 'assets/coin1.png'},
+ coin5 = {width: 20, height: 20, x: 850, y:265, z:1, src: 'assets/coin1.png'},
+ coin6 = {width: 20, height: 20, x: 900, y:265, z:1, src: 'assets/coin1.png'},
 ]
 
 class Component{
