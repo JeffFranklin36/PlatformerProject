@@ -36,16 +36,23 @@ function keydown(e) {
      if(keys.left) {
       player.x+= -5.5;
      }
-     if(keys.right) {
+     else if(keys.right) {
          player.x  += 5.5;
      }
-     if(keys.up) {
+     else if(keys.up) {
         player.y  -= 80;
     }
-    if(keys.down){
+    else if(keys.down && player.x <= 480){
+        player.y = 350; 
+    } 
+    else if(keys.down && player.x >= 960){
         player.y = 350; 
     }
-   
+    else if(keys.down && player.x >= 480){
+        player.y = 230;
+    }else if(keys.down && player.x >= 640){
+        player.y = 180;
+    }
      renderGame()
     }
    document.addEventListener("keydown",keydown);
