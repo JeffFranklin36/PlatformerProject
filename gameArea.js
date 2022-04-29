@@ -24,3 +24,15 @@ let myGameArea = {
         document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     }
 }
+
+// when a failed game result is met this function runs
+function endGame(){
+    player.width = 60
+    player.height = 40 
+    player.color = 'red'
+    player.y = 410
+    setTimeout(() => {
+        window.alert("You have died press OK to begin a new attempt");
+        location.reload();
+      }, "1000")
+}
