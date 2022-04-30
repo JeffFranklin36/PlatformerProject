@@ -17,12 +17,10 @@ let worldElements = [
 let objectives = [
  coin1 = {type:'coin', width: 20, height: 20, x: 525, y:230, z:1, src: 'assets/coin1.png'},
  coin2 = {type:'coin', width: 20, height: 20, x: 575, y:230, z:1, src: 'assets/coin1.png'},
- coin3 = {type:'coin', width: 20, height: 20, x: 680, y:230, z:1, src: 'assets/coin1.png'},
- coin4 = {type:'coin', width: 20, height: 20, x: 740, y:230, z:1, src: 'assets/coin1.png'},
+ coin3 = {type:'coin', width: 20, height: 20, x: 680, y:180, z:1, src: 'assets/coin1.png'},
+ coin4 = {type:'coin', width: 20, height: 20, x: 740, y:180, z:1, src: 'assets/coin1.png'},
  coin5 = {type:'coin', width: 20, height: 20, x: 850, y:230, z:1, src: 'assets/coin1.png'},
  coin6 = {type:'coin', width: 20, height: 20, x: 900, y:230, z:1, src: 'assets/coin1.png'},
- coin7 = {type:'coin', width: 20, height: 20, x: 100, y:350, z:1, src: 'assets/coin1.png'},
- wall1 = {type:'wall', width: 20, height: 20, x: 100, y:350, z:1, src: 'assets/coin1.png'},
 ]
 // coin count will have +1 added to it whenever a coin is picked up when it reaches 6 winGame() will run
 let coinCount = 0

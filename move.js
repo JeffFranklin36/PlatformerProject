@@ -100,10 +100,8 @@ function keyup(e) {
         let currentLocation = player.location
         if(currentLocation != 'ground'){
             let newLocation = onPlatform(currentLocation)
-            console.log(newLocation)
             if(currentLocation === 'high'){
                 newLocation === onPlatform('low')
-                console.log('$' + newLocation)
             }
             if(newLocation === 'ground'){
                 player.y = player.groundLevel
@@ -117,10 +115,10 @@ function keyup(e) {
     }
      else if(keys.right) {
         player.x  += 5.5;
+        console.log(player.y)
         let currentLocation = player.location
         if(currentLocation != 'ground'){
             let newLocation = onPlatform(currentLocation)
-            console.log(newLocation)
             if(currentLocation === 'high'){
                 newLocation === onPlatform('low')
             }
