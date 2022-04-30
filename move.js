@@ -4,22 +4,55 @@ function isLava(){
     }
 }
 
-//isPlatform checks if player.y is = to platform.ys if not drop to bottom
-// function isPlatform(){
-//     if(player.y = 290){
-//         player.y = worldElements.platform1.y
-//     }
-// }
+function onPlatform(currentLocation){
+    let foundOnLow = false;
+    let foundOnHigh = false;
+    let newLocation = ''
+    worldElements.forEach(element => {
+        if(element.type === 'lowPlatform'){
+            if(currentLocation === 'low'){
+                if(player.x >= element.x-50 && player.x <= element.x+element.width){
+                    newLocation = 'low';
+                    foundOnLow = true
+                    }
+            }
+        }else if(element.type === 'highPlatform'){
+            if(currentLocation === 'high'){
+                if(player.x >= element.x-50 && player.x <= element.x+element.width){
+                    newLocation = 'high';
+                    foundOnHigh = true
 
-//isCoin(x, y) -> bool (true or false)
-//addCoinToPurse
-    // coinCount + 1
-    // remove coin from game
+                    }
+            }
+        }
+    });
+    if(foundOnLow === false && foundOnHigh === false){
+        newLocation = 'ground'
+    }
+    if(currentLocation === 'high' && newLocation != 'high'){
+        newLocation = 'low'
+    }
+ return newLocation
+}
 
-// isGround(){
-    // checks if player.y is = to ground if not drops to ground
-//}
-
+function underPlatform(){
+    worldElements.forEach(element => {
+        if(element.type === 'lowPlatform'){
+            if(player.location === 'ground'){
+                if(player.x >= element.x-50 && player.x <= element.x+element.width){
+                    player.location = 'low'
+                }
+            }
+        }
+        if(element.type === 'highPlatform'){
+            if(player.location === 'low'){
+                if(player.x >= element.x-50 && player.x <= element.x+element.width){
+                    player.location = 'high'
+                }
+            }
+        }
+    });
+}
 
 let keys = {
     right: false,
@@ -32,16 +65,19 @@ function keydown(e) {
      if(e.keyCode == 37) {
         keys.left = true;
         isLava();
+        isCoin();
      }
      else if(e.keyCode == 39) {
         keys.right = true;
         isLava();
+        isCoin();
      }
      else if(e.keyCode == 38) {
         keys.up = true
         setTimeout(() =>{keys.up = false;}, 50)
         setTimeout(() =>{keys.down = true;}, 50)
         isLava();
+        isCoin();
      }
 }
 
@@ -56,24 +92,68 @@ function keyup(e) {
      else if(e.keyCode == 38) {
         keys.up = false;
         setTimeout(() =>{keys.down = false;}, 50)
-        isPlatform();
     }
 } 
     function loop() {
      if(keys.left) {
         player.x+= -5.5;
-     }
+        let currentLocation = player.location
+        if(currentLocation != 'ground'){
+            let newLocation = onPlatform(currentLocation)
+            console.log(newLocation)
+            if(currentLocation === 'high'){
+                newLocation === onPlatform('low')
+                console.log('$' + newLocation)
+            }
+            if(newLocation === 'ground'){
+                player.y = player.groundLevel
+            }else if(newLocation === 'low'){
+                player.y = player.lowPlatform
+            }else if(newLocation === 'high'){
+                player.y = player.highPlatform
+            }
+            player.location = newLocation
+        }
+    }
      else if(keys.right) {
         player.x  += 5.5;
-     }
+        let currentLocation = player.location
+        if(currentLocation != 'ground'){
+            let newLocation = onPlatform(currentLocation)
+            console.log(newLocation)
+            if(currentLocation === 'high'){
+                newLocation === onPlatform('low')
+            }
+            if(newLocation === 'ground'){
+                player.y = player.groundLevel
+            }else if(newLocation === 'low'){
+                player.y = player.lowPlatform
+            }else if(newLocation === 'high'){
+                player.y = player.highPlatform
+            }
+            player.location = newLocation
+        }
+    }
      else if(keys.up) {
         player.y  -= 80;
     }
     else if(keys.down){
-        player.y = 350; 
+        underPlatform()
+        if(player.location === 'low'){
+            player.y = player.lowPlatform
+        }else if(player.location === 'high'){
+            player.y = player.highPlatform
+        }else{
+            player.y = player.groundLevel
+        }
+     
+        }
+        renderGame()
+        if(gameOver === true){
+          return
     } 
-  renderGame()
 }
+
 document.addEventListener("keydown",keydown);
 document.addEventListener("keyup",keyup);
    // Calling loop every 22 milliseconds to update the frame

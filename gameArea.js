@@ -2,12 +2,14 @@
 function renderGame(){
  myGameArea.start();
  worldElements.forEach(element => {
-     createdElement = new Component(element.width, element.height, element.color, element.x, element.y, element.z, element.src)
+     createdElement = new Component(element.type, element.width, element.height, element.color, element.x, element.y, element.z, element.src)
      createdElement.create();
  });
  objectives.forEach(element => {
-    createdElement = new Component(element.width, element.height, element.color, element.x, element.y, element.z, element.src)
-    createdElement.createImg();
+    if(element.type === 'coin'){
+        createdElement = new Component(element.type, element.width, element.height, element.color, element.x, element.y, element.z, element.src)
+        createdElement.createImg();
+    }
  })
  renderPlayer()
 }
@@ -26,13 +28,22 @@ let myGameArea = {
 }
 
 // when a failed game result is met this function runs
+let gameOver = false;
 function endGame(){
+    gameOver = true
     player.width = 60
     player.height = 40 
     player.color = 'red'
     player.y = 410
     setTimeout(() => {
-        window.alert("You have died press OK to begin a new attempt");
+        window.alert("You have died, press OK to begin a new attempt");
         location.reload();
-      }, "1000")
+      }, "200")
+}
+// when 6 coins are collected alerts player that they won and allows them to play again
+function winGame(){
+    if(coinCount === 6){
+        window.alert('You Won!')
+        location.reload();
+    }
 }
