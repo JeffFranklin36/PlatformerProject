@@ -1,7 +1,10 @@
 # PlatformerProject
+Platformer Game
 
-current issues faced: character needs to be able to jump
-                      character does not respect the laws of gravity
-                      character needs to be able to pick up coins
-                      need win conditions and loss conditions
-                      need lava that when touched results in loss condition
+This project was created to gain experience building a program from scratch using Javascript, HTML, and CSS
+
+How to play: Use the arrow keys to move your character around the screen you must collect all the coins on the map to win the game. Be sure to avoid the lava pit in the center of the map otherwise you will be met with a crispy end.
+
+Future possible updates: dynamic enemy npcs who end the game when collided with, Moving platforms, time limit, game component cosmetic upgrades.
+
+Credit: I used an opensource sprite sheet for the collectable coins.
