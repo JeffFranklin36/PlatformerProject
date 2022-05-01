@@ -1,4 +1,4 @@
-//static world objects
+//all non player world objects
 let worldElements = [
     groundLeft = {type:'environment', width: 495, height: 75, color: 'brown', x: 0, y:425, z:0, src: ''},
     grassLeft =  {type:'environment', width: 495, height: 25, color: 'green', x: 0, y:400, z:0,  src: ''},
@@ -89,12 +89,6 @@ src: 'assets/playerIdle.png' ,
 };
 
 //puts player on screen
-function renderPlayer(){
- let ctx = myGameArea.context;
- ctx.fillStyle = player.color;
- ctx.fillRect(player.x, player.y, player.width, player.height);
- }
-
  function renderPlayerImg(){
     let ctx = myGameArea.context;
     let imageObj = new Image();
