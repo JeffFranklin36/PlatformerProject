@@ -2,16 +2,17 @@
 function renderGame(){
  myGameArea.start();
  worldElements.forEach(element => {
-     createdElement = new Component(element.type, element.width, element.height, element.color, element.x, element.y, element.z, element.src)
-     createdElement.create();
- });
- objectives.forEach(element => {
-    if(element.type === 'coin'){
-        createdElement = new Component(element.type, element.width, element.height, element.color, element.x, element.y, element.z, element.src)
-        createdElement.createImg();
-    }
- })
- renderPlayer()
+     if(element.type != 'collectedCoin'){
+        createdElement = new Component(element.type,element.width, element.height, element.color, element.x, element.y, element.z, element.src)
+        if (element.src === '') {
+            createdElement.create();
+        }
+        else {
+            createdElement.createImg();
+        }
+     }
+});
+ renderPlayerImg()
 }
 
 //On load alerts user to game objectives and obstacles
