@@ -7,4 +7,4 @@ How to play: Use the arrow keys to move your character around the screen you mus
 
 Future possible updates: dynamic enemy npcs who end the game when collided with, Moving platforms, time limit, game component cosmetic upgrades.
 
-Credit: I used an opensource sprite sheet for the collectable coins.
+Credit: I used an opensource sprite sheet for the collectable coins. I followed documentation from W3 game builder tutorial that can be found at: https://www.w3schools.com/graphics/game_intro.asp as well as from: educative.io/edpresso/how-to-make-a-simple-platformer-using-javascript
