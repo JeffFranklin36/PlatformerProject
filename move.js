@@ -1,9 +1,10 @@
+// detects if player character touches lava if yes character dies and endGame() runs
 function isLava(){
-    if(player.x >= lava.x && player.x <= lava.x+lava.width && player.y == 350){
+    if(player.x >= lava.x-25 && player.x <= lava.x+lava.width && player.y == 350){
         endGame()
     }
 }
-
+// detects if player is on a platform and which level of platform player is on
 function onPlatform(currentLocation){
     let foundOnLow = false;
     let foundOnHigh = false;
@@ -34,7 +35,7 @@ function onPlatform(currentLocation){
     }
  return newLocation
 }
-
+// detects if player is under a platform to see if player will be able to jump up to it
 function underPlatform(){
     worldElements.forEach(element => {
         if(element.type === 'lowPlatform'){
@@ -54,6 +55,8 @@ function underPlatform(){
     });
 }
 
+
+// default keys properties to help with movement event listeners
 let keys = {
     right: false,
     left: false,
@@ -83,15 +86,20 @@ function keydown(e) {
 
 function keyup(e) {
      if(e.keyCode == 37) {
-        keys.left = false;   
-         
+        keys.left = false; 
+        isLava();
+        isCoin();  
         }
      else if(e.keyCode == 39) {
         keys.right = false;
+        isLava();
+        isCoin();
      }
      else if(e.keyCode == 38) {
         keys.up = false;
         setTimeout(() =>{keys.down = false;}, 50)
+        isLava();
+        isCoin();
     }
 } 
     function loop() {

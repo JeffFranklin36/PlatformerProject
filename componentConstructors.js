@@ -1,18 +1,19 @@
-//array of game elements that will never move
+//static world objects
 let worldElements = [
- groundLeft = {type:'environment', width: 495, height: 75, color: 'brown', x: 0, y:425, z:0},
- grassLeft =  {type:'environment', width: 495, height: 25, color: 'green', x: 0, y:400, z:0},
- groundRight = {type:'environment', width: 495, height: 75, color: 'brown', x: 1010, y:425, z:0},
- grassRight =  {type:'environment', width: 495, height: 25, color: 'green', x: 1010, y:400, z:0},
- lava = {type:'obstacle', width: 515, height: 110, color: 'orange', x:495, y:395, z:1},
- sky = {type:'environment', width: 1485, height: 400, color: 'skyblue', x: 0, y:0, z:0},
- sun = {type:'environment', width: 80, height: 80, color: 'lightyellow', x: 80, y:50, z:1},
- platform1 = {type:'lowPlatform', width: 160, height: 30, color: 'slategray', x: 480, y:290, z:1},
- platform2 = {type:'highPlatform', width: 160, height: 30, color: 'slategray', x: 640, y:240, z:1},
- platform3 = {type:'lowPlatform', width: 160, height: 30, color: 'slategray', x: 800, y:290, z:1},
-//  platformTest = {type:'lowPlatform', width: 160, height: 30, color: 'slategray', x: 100, y:290, z:1},
-//  platformHighTest = {type:'highPlatform', width: 80, height: 30, color: 'slategray', x: 275, y:240, z:1}
-]
+    groundLeft = {type:'environment', width: 495, height: 75, color: 'brown', x: 0, y:425, z:0},
+    grassLeft =  {type:'environment', width: 495, height: 25, color: 'green', x: 0, y:400, z:0},
+    groundRight = {type:'environment', width: 495, height: 75, color: 'brown', x: 1010, y:425, z:0},
+    grassRight =  {type:'environment', width: 495, height: 25, color: 'green', x: 1010, y:400, z:0},
+    lava = {type:'obstacle', width: 515, height: 110, color: 'orange', x:495, y:395, z:1},
+    sky = {type:'environment', width: 1485, height: 400, color: 'skyblue', x: 0, y:0, z:0},
+    sun = {type:'environment', width: 80, height: 80, color: 'lightyellow', x: 80, y:50, z:1},
+    platform1 = {type:'lowPlatform', width: 160, height: 30, color: 'slategray', x: 480, y:290, z:1},
+    platform2 = {type:'highPlatform', width: 160, height: 30, color: 'slategray', x: 640, y:240, z:1},
+    platform3 = {type:'lowPlatform', width: 160, height: 30, color: 'slategray', x: 800, y:290, z:1},
+   
+   ]
+
+
 //array of game elements that will be pickable by the player
 let objectives = [
  coin1 = {type:'coin', width: 20, height: 20, x: 525, y:230, z:1, src: 'assets/coin1.png'},
@@ -24,14 +25,17 @@ let objectives = [
 ]
 // coin count will have +1 added to it whenever a coin is picked up when it reaches 6 winGame() will run
 let coinCount = 0
+// detects if player character touches coin and picks it up if character picks coin
 function isCoin(){
     objectives.forEach(element => {
         if(element.type === 'coin'){
-            if(player.x >= element.x && player.y == element.y){
+            if(player.x >= element.x-30 && player.y == element.y){
                 element.type ='collectedCoin'
                 coinCount ++
                 console.log(coinCount)
+                setTimeout(() => {
                 winGame()
+                }, 200)
             }
         }
      })

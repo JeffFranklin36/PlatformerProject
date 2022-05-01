@@ -14,8 +14,15 @@ function renderGame(){
  renderPlayer()
 }
 
+//On load alerts user to game objectives and obstacles
+function instructionsAlert (){
+    alert("Collect all coins to win, avoid the lava pit at all costs! Press OK to begin");
+    }
+window.onload= instructionsAlert (); 
 
 
+
+// properties of the game area canvas
 let myGameArea = {
     canvas : document.createElement("canvas"),
     start : function() {
@@ -40,10 +47,10 @@ function endGame(){
         location.reload();
       }, "200")
 }
-// when 6 coins are collected alerts player that they won and allows them to play again
+// when a game success result is met this function runs
 function winGame(){
     if(coinCount === 6){
-        window.alert('You Won!')
+        window.alert('You Won! Press OK to play again')
         location.reload();
     }
 }
